@@ -26,13 +26,6 @@ def create_table():
     return True
 
 
-def format_data(data):
-    #clean data
-    data = data.replace('\n',' [newlinechar] ')
-    data = data.replace('\r', ' [newlinechar] ')
-    data = data.replace('"', "'")
-
-
 def data_is_acceptable(data):
     if  len(data) < 1:
         return False
@@ -56,8 +49,6 @@ def transaction_bldr(sql):
         sql_transaction = []
 
 
-
-
 def find_existing_score(id):
     try:
         sql = "SELECT score FROM reddit_conversations WHERE parent_id ='{}'".format (id)
@@ -70,7 +61,8 @@ def find_existing_score(id):
     except Exception as e:
         #print('find parent', e)
         return False
-    
+
+
 def find_parent(pid):
     try:
         sql = "SELECT comment FROM reddit_conversations WHERE comment_id = '{}'".format (pid)
@@ -100,6 +92,7 @@ def sql_insert_replace_comment(commentid,parentid,parent,
         transaction_bldr(sql)
     except Exception as e:
         print('replace insertion',str(e))
+
 
 def sql_insert_has_parent(commentid,parentid,parent,
                           comment,subreddit,time,score,root):
@@ -132,7 +125,6 @@ def sql_insert_no_parent(commentid,parentid,comment,
         transaction_bldr(sql)
     except Exception as e:
         print('no parent insertion',str(e))
-
     
 
 
