@@ -11,6 +11,7 @@ cursor_length = limit
 counter = 0
 test_done = False
 
+
 def format_data(data):
     #clean data 
     data = str(data)
@@ -20,6 +21,7 @@ def format_data(data):
     data = data.replace('&gt; ', '')
     data = data.replace('&gt;', '')
     return data
+
 
 query = """SELECT * FROM reddit_conversations WHERE unix > {}
                  ORDER BY unix ASC LIMIT {}"""
