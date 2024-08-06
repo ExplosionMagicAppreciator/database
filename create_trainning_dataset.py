@@ -5,11 +5,9 @@ import pandas as pd
 
 connection = sqlite3.connect('c:/Users/JJ/Downloads/Compressed/reddit-corpus/utterances.db')
 cursor = connection.cursor()
-limit = 5000
 last_unix = 0
-cursor_length = limit 
+cursor_length = 0
 counter = 0
-test_done = False
 
 
 def format_data(data):
